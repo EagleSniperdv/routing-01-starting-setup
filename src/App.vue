@@ -1,28 +1,25 @@
 <template>
-  <the-navigation @set-page="setActivePage"></the-navigation>
+  <the-navigation ></the-navigation>
   <main>
-    <component :is="activePage"></component>
+    <router-view></router-view>
   </main>
 </template>
 
 <script>
-import TeamsList from './components/teams/TeamsList.vue';
-import UsersList from './components/users/UsersList.vue';
 import TheNavigation from './components/nav/TheNavigation.vue';
 
 export default {
   components: {
     TheNavigation,
-    TeamsList,
-    UsersList,
   },
   data() {
     return {
-      activePage: 'teams-list',
+      
       teams: [
         { id: 't1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
         { id: 't2', name: 'Backend Engineers', members: ['u1', 'u2', 'u3'] },
         { id: 't3', name: 'Client Consulting', members: ['u4', 'u5'] },
+        { id: 't4', name: 'Database', members: [ 'u6'] },
       ],
       users: [
         { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
@@ -30,6 +27,7 @@ export default {
         { id: 'u3', fullName: 'Julie Jones', role: 'Engineer' },
         { id: 'u4', fullName: 'Alex Blackfield', role: 'Consultant' },
         { id: 'u5', fullName: 'Marie Smith', role: 'Consultant' },
+        { id: 'u6', fullName: 'Naboth Nyagoko', role: 'Database' },
       ],
     };
   },
@@ -39,11 +37,7 @@ export default {
       users: this.users,
     };
   },
-  methods: {
-    setActivePage(page) {
-      this.activePage = page;
-    },
-  },
+  
 };
 </script>
 
